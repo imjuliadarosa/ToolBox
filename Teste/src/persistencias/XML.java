@@ -46,19 +46,17 @@ public class XML implements Persistencia {
         texto.setValue(corpo);
         caixaTexto.setAttributeNode(texto);
         //
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource source = new DOMSource(registro);
-            
-            StreamResult streamResult = new StreamResult(new File("registro.xml"));
-            
-            transformer.transform(source, streamResult);
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource source = new DOMSource(registro);
+
+        StreamResult streamResult = new StreamResult(new File("registro.xml"));
+
+        transformer.transform(source, streamResult);
         System.out.print("Gravado em XML com sucesso!");
         
-        }catch(ParserConfigurationException ex){
+        }catch(ParserConfigurationException | TransformerException ex){
             System.err.printf("Erro na criação do arquivo em XML : %s.\n", ex.getMessage());
-        } catch (TransformerException ex) {
-             System.err.printf("Erro na criação do arquivo em XML : %s.\n", ex.getMessage());
         }
     }
 
@@ -71,9 +69,7 @@ public class XML implements Persistencia {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document;
-        
-            document = documentBuilder.parse(xmlFile);
-        
+        document = documentBuilder.parse(xmlFile);
         NodeList list = document.getElementsByTagName("caixaTexto");
         for(int i =0;i<list.getLength();i++){
             Node node = list.item(i);
@@ -82,15 +78,9 @@ public class XML implements Persistencia {
                 corpo += element.getAttribute("texto");
             }
         }
-        System.out.println("Lido de CSV com sucesso!");
+        System.out.println("Lido de XML com sucesso!");
         return corpo;
-        } catch (SAXException ex) {
-            System.err.printf("Erro na abertura do arquivo em XML : %s.\n" , ex.getMessage());
-            return null;
-        } catch (IOException ex) {
-            System.err.printf("Erro na abertura do arquivo em XML : %s.\n" , ex.getMessage());
-            return null;
-        } catch (ParserConfigurationException ex) {
+        } catch (SAXException | IOException | ParserConfigurationException ex) {
             System.err.printf("Erro na abertura do arquivo em XML : %s.\n" , ex.getMessage());
             return null;
         }

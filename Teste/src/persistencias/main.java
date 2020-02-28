@@ -16,14 +16,19 @@ import javax.mail.MessagingException;
  */
 public class main {
     public static void main(String [] args) throws MessagingException{
+        JSON json = new JSON();
+        CSV csv = new CSV();
+        XML xml = new XML();
+        Registro registro = null;
+        //registro = new Registro(xml);
+        //registro.gravar("Registro em xml.");
+        //System.out.println(registro.ler());
+        Notificacao notificacao;
+        Gmail gmail = new Gmail();
+        //notificacao = new Notificacao(gmail);
+        //notificacao.sendEmail("julia1705rosa@gmail.com", registro.ler());
         Scanner read = new Scanner(System.in);
         int opcao;
-        JSON json = null;
-        XML xml = null;
-        CSV csv = null;
-        Gmail gmail = null;
-        Notificacao notificacao;
-        Registro registro = null;
         String email ;
         do{
             System.out.println("O que deseja fazer?\n 1 - gravar mensagem \n 2 - ler mensagem em persistencia \n 3 - enviar mensagem em persistencia por email \n 4 - sair");
