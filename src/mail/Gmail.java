@@ -24,8 +24,8 @@ public class Gmail {
     public void sendEmail(String recipient, String text) throws MessagingException{
         System.out.println("Preparando mensagem...");
         Properties properties = new Properties();
-        String myAccountEmail = "uneedtosettheemailhereoritwontwork@gmail.com";
-        String password = "uneedtosetthepasswordhereoritwontwork";
+        String myAccountEmail = "juliafromrosohna@gmail.com";
+        String password = "itisalwaysswordfish";
         /* versão ultrpassada
         properties.put("mail.smtp.auth","true");
         properties.put("mail.smtp.starttls","true");
