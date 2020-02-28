@@ -26,7 +26,7 @@ public class Gmail implements Mail {
         System.out.println("Preparando mensagem...");
         Properties properties = new Properties();
         String myAccountEmail = "juliafromrosohna@gmail.com";
-        String password = "itisalwaysswordfish";
+        String password = "";
         /* versão ultrpassada
         properties.put("mail.smtp.auth","true");
         properties.put("mail.smtp.starttls","true");
